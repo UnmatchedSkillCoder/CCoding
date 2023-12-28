@@ -1,0 +1,1252 @@
+/*
+//Linear search
+#include <stdio.h>
+
+// Function to perform linear search on an array
+int linearSearch(int arr[], int size, int key) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == key) {
+            return i;  // Key found, return the index
+        }
+    }
+    return -1;  // Key not found
+}
+
+int main() {
+    int size, key, result;
+
+    // Get the size of the array from the user
+    printf("Enter the size of the array: ");
+    scanf(" %d", &size);
+
+    // Declare an array of the given size
+    int arr[size];
+
+    // Get array elements from the user
+    printf("Enter elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf(" %d", &arr[i]);
+    }
+
+    // Get the key to search for
+    printf("Enter the key to search for: ");
+    scanf(" %d", &key);
+
+    // Perform linear search
+    result = linearSearch(arr, size, key);
+
+    // Display the result
+    if (result != -1) {
+        printf("Key %d found at index %d.\n", key, result);
+    }else {
+        printf("Key %d not found in the array.\n", key);
+    }
+
+    return 0;
+}
+*/
+
+/*
+//Binary search
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to perform binary search on a sorted array
+int binarySearch(int *arr, int size, int key) {
+    int low = 0, high = size - 1;
+
+    while (low <= high){
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == key)
+            return mid; // Key found, return the index
+        else if (arr[mid] < key)
+            low = mid + 1; // Discard the left half
+        else
+            high = mid - 1; // Discard the right half
+    }
+
+    return -1; // Key not found
+}
+
+int main(){
+    int size, key, result;
+
+    // Get the size of the array from the user
+    printf("Enter the size of the array: ");
+    scanf(" %d", &size);
+
+    // Allocate memory for the array dynamically
+    int *arr = (int *)malloc(size * sizeof(int));
+
+    // Check if memory allocation is successful
+    if (arr == NULL){
+        printf("Memory allocation failed. Exiting the program.\n");
+        return 1;
+    }
+
+    // Get array elements from the user
+    printf("Enter sorted elements of the array:\n");
+    for (int i = 0; i < size; i++){
+        scanf(" %d", &arr[i]);
+    }
+
+    // Get the key to search for
+    printf("Enter the key to search for: ");
+    scanf(" %d", &key);
+
+    // Perform binary search
+    result = binarySearch(arr, size, key);
+
+    // Display the result
+    if (result != -1){
+        printf("Key %d found at index %d.\n", key, result);
+    }else {
+        printf("Key %d not found in the array.\n", key);
+    }
+
+    // Free dynamically allocated memory
+    free(arr);
+
+    return 0;
+}
+*/
+
+/*
+//Stack implementation
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 10  // Maximum size of the stack
+
+struct Stack {
+    int arr[MAX_SIZE];
+    int top;
+};
+
+// Function to initialize the stack
+void initialize(struct Stack *stack) {
+    stack->top = -1;
+}
+
+// Function to check if the stack is empty
+int isEmpty(struct Stack *stack) {
+    return stack->top == -1;
+}
+
+// Function to check if the stack is full
+int isFull(struct Stack *stack) {
+    return stack->top == MAX_SIZE - 1;
+}
+
+// Function to push an element onto the stack
+void push(struct Stack *stack, int value) {
+    if (isFull(stack)) {
+        printf("Stack overflow! Cannot push %d.\n", value);
+    } else {
+        stack->arr[++stack->top] = value;
+        printf("Pushed %d onto the stack.\n", value);
+    }
+}
+
+// Function to pop an element from the stack
+void pop(struct Stack *stack) {
+    if (isEmpty(stack)) {
+        printf("Stack underflow! Cannot pop from an empty stack.\n");
+    } else {
+        int poppedValue = stack->arr[stack->top--];
+        printf("Popped %d from the stack.\n", poppedValue);
+    }
+}
+
+// Function to display the elements of the stack
+void display(struct Stack *stack) {
+    if (isEmpty(stack)) {
+        printf("Stack is empty.\n");
+    } else {
+        printf("Stack elements: ");
+        for (int i = 0; i <= stack->top; i++) {
+            printf("%d ", stack->arr[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    struct Stack stack;
+    initialize(&stack);
+
+    push(&stack, 10);
+    push(&stack, 20);
+    push(&stack, 30);
+    display(&stack);
+
+    pop(&stack);
+    display(&stack);
+
+    push(&stack, 40);
+    display(&stack);
+
+    return 0;
+}
+*/
+
+/*
+//Quick sort
+#include <stdio.h>
+
+// Function to partition the array and return the pivot index
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  // Choose the last element as the pivot
+    int i = low - 1;  // Index of the smaller element
+
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            // Swap arr[i+1] and arr[j]
+            i++;
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    // Swap arr[i+1] and arr[high] (pivot)
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    return i + 1;
+}
+
+// Function to perform quicksort on the array
+void quicksort(int arr[], int low, int high) {
+    if (low < high) {
+        // Partition the array and get the pivot index
+        int pivotIndex = partition(arr, low, high);
+
+        // Recursively sort the subarrays before and after the pivot
+        quicksort(arr, low, pivotIndex - 1);
+        quicksort(arr, pivotIndex + 1, high);
+    }
+}
+
+// Function to print an array
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int size;
+
+    // Get the size of the array from the user
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    // Declare an array of the given size
+    int arr[size];
+
+    // Get array elements from the user
+    printf("Enter elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Display the original array
+    printf("Original array: ");
+    printArray(arr, size);
+
+    // Perform quicksort and display the result
+    quicksort(arr, 0, size - 1);
+    printf("Array after Quicksort: ");
+    printArray(arr, size);
+
+    return 0;
+}
+*/
+
+/*
+//Merge sort
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to merge two sorted subarrays into a single sorted array
+void merge(int arr[], int left, int middle, int right) {
+    int i, j, k;
+    int n1 = middle - left + 1;
+    int n2 = right - middle;
+
+    // Create temporary arrays
+    int L[n1], R[n2];
+
+    // Copy data to temporary arrays L[] and R[]
+    for (i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[middle + 1 + j];
+
+    // Merge the temporary arrays back into arr[left..right]
+    i = 0; // Initial index of the first subarray
+    j = 0; // Initial index of the second subarray
+    k = left; // Initial index of the merged subarray
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], if there are any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if there are any
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+// Function to perform merge sort on the array
+void mergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        // Same as (left+right)/2, but avoids overflow for large left and right
+        int middle = left + (right - left) / 2;
+
+        // Recursively sort the first and second halves
+        mergeSort(arr, left, middle);
+        mergeSort(arr, middle + 1, right);
+
+        // Merge the sorted halves
+        merge(arr, left, middle, right);
+    }
+}
+
+// Function to print an array
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int size;
+
+    // Get the size of the array from the user
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    // Declare an array of the given size
+    int arr[size];
+
+    // Get array elements from the user
+    printf("Enter elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Display the original array
+    printf("Original array: ");
+    printArray(arr, size);
+
+    // Perform merge sort and display the result
+    mergeSort(arr, 0, size - 1);
+    printf("Array after Merge Sort: ");
+    printArray(arr, size);
+
+    return 0;
+}
+*/
+
+/*
+//Queue implementation
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 10  // Maximum size of the queue
+
+struct Queue {
+    int arr[MAX_SIZE];
+    int front, rear;
+};
+
+// Function to initialize the queue
+void initialize(struct Queue *queue) {
+    queue->front = -1;
+    queue->rear = -1;
+}
+
+// Function to check if the queue is empty
+int isEmpty(struct Queue *queue) {
+    return (queue->front == -1 && queue->rear == -1);
+}
+
+// Function to check if the queue is full
+int isFull(struct Queue *queue) {
+    return (queue->rear == MAX_SIZE - 1);
+}
+
+// Function to enqueue (insert) an element into the queue
+void enqueue(struct Queue *queue, int value) {
+    if (isFull(queue)) {
+        printf("Queue is full. Cannot enqueue %d.\n", value);
+    } else {
+        if (isEmpty(queue)) {
+            queue->front = 0;  // Set front to 0 when enqueuing the first element
+        }
+        queue->arr[++queue->rear] = value;
+        printf("Enqueued %d into the queue.\n", value);
+    }
+}
+
+// Function to dequeue (remove) an element from the queue
+void dequeue(struct Queue *queue) {
+    if (isEmpty(queue)) {
+        printf("Queue is empty. Cannot dequeue from an empty queue.\n");
+    } else {
+        int dequeuedValue = queue->arr[queue->front];
+        printf("Dequeued %d from the queue.\n", dequeuedValue);
+
+        if (queue->front == queue->rear) {
+            // Reset front and rear to -1 when dequeuing the last element
+            initialize(queue);
+        } else {
+            // Move front to the next element
+            queue->front++;
+        }
+    }
+}
+
+// Function to display the elements of the queue
+void display(struct Queue *queue) {
+    if (isEmpty(queue)) {
+        printf("Queue is empty.\n");
+    } else {
+        printf("Queue elements: ");
+        for (int i = queue->front; i <= queue->rear; i++) {
+            printf("%d ", queue->arr[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    struct Queue queue;
+    initialize(&queue);
+
+    enqueue(&queue, 10);
+    enqueue(&queue, 20);
+    enqueue(&queue, 30);
+    display(&queue);
+
+    dequeue(&queue);
+    display(&queue);
+
+    enqueue(&queue, 40);
+    display(&queue);
+
+    return 0;
+}
+*/
+
+/*
+//Circular queue implementation
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 5  // Maximum size of the circular queue
+
+struct CircularQueue {
+    int arr[MAX_SIZE];
+    int front, rear;
+};
+
+// Function to initialize the circular queue
+void initialize(struct CircularQueue *queue) {
+    queue->front = -1;
+    queue->rear = -1;
+}
+
+// Function to check if the circular queue is empty
+int isEmpty(struct CircularQueue *queue) {
+    return (queue->front == -1 && queue->rear == -1);
+}
+
+// Function to check if the circular queue is full
+int isFull(struct CircularQueue *queue) {
+    return ((queue->rear + 1) % MAX_SIZE == queue->front);
+}
+
+// Function to enqueue (insert) an element into the circular queue
+void enqueue(struct CircularQueue *queue, int value) {
+    if (isFull(queue)) {
+        printf("Queue is full. Cannot enqueue %d.\n", value);
+    } else {
+        if (isEmpty(queue)) {
+            queue->front = 0;  // Set front to 0 when enqueuing the first element
+        }
+        queue->rear = (queue->rear + 1) % MAX_SIZE;
+        queue->arr[queue->rear] = value;
+        printf("Enqueued %d into the circular queue.\n", value);
+    }
+}
+
+// Function to dequeue (remove) an element from the circular queue
+void dequeue(struct CircularQueue *queue) {
+    if (isEmpty(queue)) {
+        printf("Queue is empty. Cannot dequeue from an empty circular queue.\n");
+    } else {
+        int dequeuedValue = queue->arr[queue->front];
+        printf("Dequeued %d from the circular queue.\n", dequeuedValue);
+
+        if (queue->front == queue->rear) {
+            // Reset front and rear to -1 when dequeuing the last element
+            initialize(queue);
+        } else {
+            // Move front to the next element in a circular manner
+            queue->front = (queue->front + 1) % MAX_SIZE;
+        }
+    }
+}
+
+// Function to display the elements of the circular queue
+void display(struct CircularQueue *queue) {
+    if (isEmpty(queue)) {
+        printf("Circular Queue is empty.\n");
+    } else {
+        printf("Circular Queue elements: ");
+        int i = queue->front;
+        do {
+            printf("%d ", queue->arr[i]);
+            i = (i + 1) % MAX_SIZE;
+        } while (i != (queue->rear + 1) % MAX_SIZE);
+        printf("\n");
+    }
+}
+
+int main() {
+    struct CircularQueue circularQueue;
+    initialize(&circularQueue);
+
+    enqueue(&circularQueue, 10);
+    enqueue(&circularQueue, 20);
+    enqueue(&circularQueue, 30);
+    display(&circularQueue);
+
+    dequeue(&circularQueue);
+    display(&circularQueue);
+
+    enqueue(&circularQueue, 40);
+    display(&circularQueue);
+
+    enqueue(&circularQueue, 50);
+    enqueue(&circularQueue, 60);
+    display(&circularQueue);
+
+    enqueue(&circularQueue, 70);  // Trying to enqueue when the circular queue is full
+    dequeue(&circularQueue);
+
+    return 0;
+}
+*/
+
+/*
+//Singly linked-list implementation
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure for the singly linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the linked list
+void insertAtEnd(struct Node** head, int value) {
+    struct Node* newNode = createNode(value);
+    if (*head == NULL) {
+        *head = newNode;
+    } else {
+        struct Node* current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = newNode;
+    }
+}
+
+// Function to display the linked list
+void displayList(struct Node* head) {
+    printf("Linked List: ");
+    while (head != NULL) {
+        printf("%d ", head->data);
+        head = head->next;
+    }
+    printf("\n");
+}
+
+// Function to search for an element in the linked list
+struct Node* search(struct Node* head, int key) {
+    while (head != NULL) {
+        if (head->data == key) {
+            return head;  // Node found
+        }
+        head = head->next;
+    }
+    return NULL;  // Node not found
+}
+
+// Function to traverse the linked list and perform an action on each node
+void traverse(struct Node* head, void (*action)(struct Node*)) {
+    while (head != NULL) {
+        action(head);
+        head = head->next;
+    }
+}
+
+// Function to delete a node from the linked list
+void deleteNode(struct Node** head, int key) {
+    struct Node *current = *head, *prev = NULL;
+
+    // Search for the node to be deleted
+    while (current != NULL && current->data != key) {
+        prev = current;
+        current = current->next;
+    }
+
+    // If the key is not present in the linked list
+    if (current == NULL) {
+        printf("Node with key %d not found.\n", key);
+        return;
+    }
+
+    // If the node to be deleted is the first node
+    if (prev == NULL) {
+        *head = current->next;
+    } else {
+        prev->next = current->next;
+    }
+
+    free(current);
+    printf("Node with key %d deleted successfully.\n", key);
+}
+
+// Function to perform an action on each node during traversal
+void printNodeData(struct Node* node) {
+    printf("%d ", node->data);
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    // Insert elements into the linked list
+    insertAtEnd(&head, 10);
+    insertAtEnd(&head, 20);
+    insertAtEnd(&head, 30);
+
+    // Display the linked list
+    displayList(head);
+
+    // Search for an element in the linked list
+    int searchKey = 20;
+    struct Node* searchResult = search(head, searchKey);
+    if (searchResult != NULL) {
+        printf("Node with key %d found.\n", searchKey);
+    } else {
+        printf("Node with key %d not found.\n", searchKey);
+    }
+
+    // Traverse the linked list and print each node's data
+    printf("Traversing the linked list: ");
+    traverse(head, printNodeData);
+    printf("\n");
+
+    // Delete a node from the linked list
+    int deleteKey = 20;
+    deleteNode(&head, deleteKey);
+
+    // Display the updated linked list
+    displayList(head);
+
+    return 0;
+}
+*/
+
+/*
+//Doubly linked-list implementation
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure for the doubly linked list
+struct Node {
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+
+// Function to create a new node
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+    newNode->data = value;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the doubly linked list
+void insertAtEnd(struct Node** head, int value) {
+    struct Node* newNode = createNode(value);
+    if (*head == NULL) {
+        *head = newNode;
+    } else {
+        struct Node* current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = newNode;
+        newNode->prev = current;
+    }
+}
+
+// Function to display the doubly linked list from head to tail
+void displayListForward(struct Node* head) {
+    printf("Doubly Linked List (Forward): ");
+    while (head != NULL) {
+        printf("%d ", head->data);
+        head = head->next;
+    }
+    printf("\n");
+}
+
+// Function to display the doubly linked list from tail to head
+void displayListBackward(struct Node* tail) {
+    printf("Doubly Linked List (Backward): ");
+    while (tail != NULL) {
+        printf("%d ", tail->data);
+        tail = tail->prev;
+    }
+    printf("\n");
+}
+
+// Function to count the number of nodes in the doubly linked list
+int countNodes(struct Node* head) {
+    int count = 0;
+    while (head != NULL) {
+        count++;
+        head = head->next;
+    }
+    return count;
+}
+
+// Function to search for an element in the doubly linked list
+struct Node* search(struct Node* head, int key) {
+    while (head != NULL) {
+        if (head->data == key) {
+            return head;  // Node found
+        }
+        head = head->next;
+    }
+    return NULL;  // Node not found
+}
+
+// Function to traverse the doubly linked list from head to tail and perform an action on each node
+void traverseForward(struct Node* head, void (*action)(struct Node*)) {
+    while (head != NULL) {
+        action(head);
+        head = head->next;
+    }
+}
+
+// Function to traverse the doubly linked list from tail to head and perform an action on each node
+void traverseBackward(struct Node* tail, void (*action)(struct Node*)) {
+    while (tail != NULL) {
+        action(tail);
+        tail = tail->prev;
+    }
+}
+
+// Function to delete a node from the doubly linked list
+void deleteNode(struct Node** head, int key) {
+    struct Node* current = *head;
+
+    // Search for the node to be deleted
+    while (current != NULL && current->data != key) {
+        current = current->next;
+    }
+
+    // If the key is not present in the doubly linked list
+    if (current == NULL) {
+        printf("Node with key %d not found.\n", key);
+        return;
+    }
+
+    // If the node to be deleted is the first node
+    if (current->prev == NULL) {
+        *head = current->next;
+        if (*head != NULL) {
+            (*head)->prev = NULL;
+        }
+    } else {
+        // Update the next pointer of the previous node
+        current->prev->next = current->next;
+    }
+
+    // If the node to be deleted is not the last node
+    if (current->next != NULL) {
+        current->next->prev = current->prev;
+    }
+
+    free(current);
+    printf("Node with key %d deleted successfully.\n", key);
+}
+
+// Function to perform an action on each node during traversal
+void printNodeData(struct Node* node) {
+    printf("%d ", node->data);
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    // Insert elements into the doubly linked list
+    insertAtEnd(&head, 10);
+    insertAtEnd(&head, 20);
+    insertAtEnd(&head, 30);
+
+    // Display the doubly linked list from head to tail
+    displayListForward(head);
+
+    // Display the doubly linked list from tail to head
+    struct Node* tail = head;
+    while (tail != NULL && tail->next != NULL) {
+        tail = tail->next;
+    }
+    displayListBackward(tail);
+
+    // Count the number of nodes in the doubly linked list
+    printf("Number of nodes: %d\n", countNodes(head));
+
+    // Search for an element in the doubly linked list
+    int searchKey = 20;
+    struct Node* searchResult = search(head, searchKey);
+    if (searchResult != NULL) {
+        printf("Node with key %d found.\n", searchKey);
+    } else {
+        printf("Node with key %d not found.\n", searchKey);
+    }
+
+    // Traverse the doubly linked list from head to tail and print each node's data
+    printf("Traversing the doubly linked list (Forward): ");
+    traverseForward(head, printNodeData);
+    printf("\n");
+
+    // Traverse the doubly linked list from tail to head and print each node's data
+    printf("Traversing the doubly linked list (Backward): ");
+    traverseBackward(tail, printNodeData);
+    printf("\n");
+
+    // Delete a node from the doubly linked list
+    int deleteKey = 20;
+    deleteNode(&head, deleteKey);
+
+    // Display the updated doubly linked list
+    displayListForward(head);
+
+    return 0;
+}
+*/
+
+/*
+//Circular linked-list implementation
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure for the circular linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the circular linked list
+void insertAtEnd(struct Node** head, int value) {
+    struct Node* newNode = createNode(value);
+    if (*head == NULL) {
+        *head = newNode;
+        newNode->next = *head;  // Make the new node point to itself
+    } else {
+        struct Node* current = *head;
+        while (current->next != *head) {
+            current = current->next;
+        }
+        current->next = newNode;
+        newNode->next = *head;  // Make the new node point to the head
+    }
+}
+
+// Function to display the circular linked list
+void displayList(struct Node* head) {
+    if (head == NULL) {
+        printf("Circular Linked List is empty.\n");
+    } else {
+        struct Node* current = head;
+        do {
+            printf("%d ", current->data);
+            current = current->next;
+        } while (current != head);
+        printf("\n");
+    }
+}
+
+// Function to count the number of nodes in the circular linked list
+int countNodes(struct Node* head) {
+    int count = 0;
+    if (head != NULL) {
+        struct Node* current = head;
+        do {
+            count++;
+            current = current->next;
+        } while (current != head);
+    }
+    return count;
+}
+
+// Function to search for an element in the circular linked list
+struct Node* search(struct Node* head, int key) {
+    if (head == NULL) {
+        return NULL;  // Empty list
+    }
+
+    struct Node* current = head;
+    do {
+        if (current->data == key) {
+            return current;  // Node found
+        }
+        current = current->next;
+    } while (current != head);
+
+    return NULL;  // Node not found
+}
+
+// Function to traverse the circular linked list and perform an action on each node
+void traverse(struct Node* head, void (*action)(struct Node*)) {
+    if (head != NULL) {
+        struct Node* current = head;
+        do {
+            action(current);
+            current = current->next;
+        } while (current != head);
+    }
+}
+
+// Function to delete a node from the circular linked list
+void deleteNode(struct Node** head, int key) {
+    if (*head == NULL) {
+        printf("Circular Linked List is empty. Cannot delete.\n");
+        return;
+    }
+
+    struct Node *current = *head, *prev = NULL;
+
+    // Search for the node to be deleted
+    do {
+        if (current->data == key) {
+            break;
+        }
+        prev = current;
+        current = current->next;
+    } while (current != *head);
+
+    // If the key is not present in the circular linked list
+    if (current == *head && current->data != key) {
+        printf("Node with key %d not found.\n", key);
+        return;
+    }
+
+    // If the node to be deleted is the only node in the circular linked list
+    if (current->next == *head) {
+        *head = NULL;
+    } else {
+        // If the node to be deleted is the first node
+        if (current == *head) {
+            *head = current->next;
+        }
+
+        // Update the next pointer of the previous node
+        if (prev != NULL) {
+            prev->next = current->next;
+        }
+    }
+
+    free(current);
+    printf("Node with key %d deleted successfully.\n", key);
+}
+
+// Function to perform an action on each node during traversal
+void printNodeData(struct Node* node) {
+    printf("%d ", node->data);
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    // Insert elements into the circular linked list
+    insertAtEnd(&head, 10);
+    insertAtEnd(&head, 20);
+    insertAtEnd(&head, 30);
+
+    // Display the circular linked list
+    displayList(head);
+
+    // Count the number of nodes in the circular linked list
+    printf("Number of nodes: %d\n", countNodes(head));
+
+    // Search for an element in the circular linked list
+    int searchKey = 20;
+    struct Node* searchResult = search(head, searchKey);
+    if (searchResult != NULL) {
+        printf("Node with key %d found.\n", searchKey);
+    } else {
+        printf("Node with key %d not found.\n", searchKey);
+    }
+
+    // Traverse the circular linked list and print each node's data
+    printf("Traversing the circular linked list: ");
+    traverse(head, printNodeData);
+    printf("\n");
+
+    // Delete a node from the circular linked list
+    int deleteKey = 20;
+    deleteNode(&head, deleteKey);
+
+    // Display the updated circular linked list
+    displayList(head);
+
+    return 0;
+}
+*/
+
+/*
+//B tree implementation
+#include <stdio.h>
+#include <stdlib.h>
+
+#define T 2 // Order of B-tree (minimum degree)
+
+// Node structure for B-tree
+struct BTreeNode {
+    int n;             // Number of keys in the node
+    int keys[2 * T - 1]; // Array of keys
+    struct BTreeNode* children[2 * T]; // Array of child pointers
+    int leaf;          // Is the node a leaf or not
+};
+
+// Function to create a new B-tree node
+struct BTreeNode* createNode() {
+    struct BTreeNode* newNode = (struct BTreeNode*)malloc(sizeof(struct BTreeNode));
+    if (newNode == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+
+    newNode->n = 0;
+    newNode->leaf = 1;
+
+    for (int i = 0; i < 2 * T; i++) {
+        newNode->children[i] = NULL;
+    }
+
+    return newNode;
+}
+
+// Function to split a child node during insertion
+void splitChild(struct BTreeNode* x, int i, struct BTreeNode* y) {
+    struct BTreeNode* z = createNode();
+    z->leaf = y->leaf;
+    z->n = T - 1;
+
+    // Copy the last (T - 1) keys of y to z
+    for (int j = 0; j < T - 1; j++) {
+        z->keys[j] = y->keys[j + T];
+    }
+
+    // If y is not a leaf, move the first T children of y to z
+    if (!y->leaf) {
+        for (int j = 0; j < T; j++) {
+            z->children[j] = y->children[j + T];
+        }
+    }
+
+    y->n = T - 1;
+
+    // Move keys and children in x to make space for z
+    for (int j = x->n; j > i; j--) {
+        x->keys[j] = x->keys[j - 1];
+    }
+    x->keys[i] = y->keys[T - 1];
+
+    for (int j = x->n + 1; j > i + 1; j--) {
+        x->children[j] = x->children[j - 1];
+    }
+    x->children[i + 1] = z;
+
+    x->n++;
+}
+
+// Function to insert a key into the B-tree
+void insert(struct BTreeNode** root, int key) {
+    struct BTreeNode* r = *root;
+
+    // If the root is full, create a new root
+    if (r->n == 2 * T - 1) {
+        struct BTreeNode* newRoot = createNode();
+        *root = newRoot;
+        newRoot->children[0] = r;
+        splitChild(newRoot, 0, r);
+        insertNonFull(newRoot, key);
+    } else {
+        insertNonFull(r, key);
+    }
+}
+
+// Function to insert a key into a non-full B-tree node
+void insertNonFull(struct BTreeNode* x, int key) {
+    int i = x->n - 1;
+
+    // If x is a leaf, insert the key
+    if (x->leaf) {
+        while (i >= 0 && key < x->keys[i]) {
+            x->keys[i + 1] = x->keys[i];
+            i--;
+        }
+        x->keys[i + 1] = key;
+        x->n++;
+    } else {
+        // Find the child which is going to have the new key
+        while (i >= 0 && key < x->keys[i]) {
+            i--;
+        }
+        i++;
+
+        // If the child is full, split it
+        if (x->children[i]->n == 2 * T - 1) {
+            splitChild(x, i, x->children[i]);
+            if (key > x->keys[i]) {
+                i++;
+            }
+        }
+
+        insertNonFull(x->children[i], key);
+    }
+}
+
+// Function to delete a key from the B-tree
+void deleteKey(struct BTreeNode* root, int key) {
+    // Implement the deletion algorithm here
+}
+
+// Function to traverse the B-tree in-order
+void traverse(struct BTreeNode* root) {
+    if (root != NULL) {
+        int i;
+        for (i = 0; i < root->n; i++) {
+            traverse(root->children[i]);
+            printf("%d ", root->keys[i]);
+        }
+        traverse(root->children[i]);
+    }
+}
+
+// Function to print the B-tree
+void printBTree(struct BTreeNode* root, int level) {
+    if (root != NULL) {
+        int i;
+        for (i = root->n - 1; i >= 0; i--) {
+            printBTree(root->children[i + 1], level + 1);
+
+            for (int j = 0; j < level; j++) {
+                printf("    ");
+            }
+
+            printf("%d\n", root->keys[i]);
+        }
+
+        printBTree(root->children[i + 1], level + 1);
+    }
+}
+
+// Function to free the memory allocated for the B-tree
+void freeBTree(struct BTreeNode* root) {
+    if (root != NULL) {
+        int i;
+        for (i = 0; i < root->n; i++) {
+            freeBTree(root->children[i]);
+        }
+        freeBTree(root->children[i]);
+        free(root);
+    }
+}
+
+int main() {
+    struct BTreeNode* root = createNode();
+
+    int keys[] = {3, 7, 1, 5, 12, 10, 6, 9, 2, 8, 4, 11};
+
+    for (int i = 0; i < sizeof(keys) / sizeof(keys[0]); i++) {
+        insert(&root, keys[i]);
+    }
+
+    printf("B-tree after insertion:\n");
+    printBTree(root, 0);
+
+    int keyToDelete = 5;
+    deleteKey(root, keyToDelete);
+
+    printf("\nB-tree after deleting key %d:\n", keyToDelete);
+    printBTree(root, 0);
+
+    // Free the allocated memory
+    freeBTree(root);
+
+    return 0;
+}
+*/
