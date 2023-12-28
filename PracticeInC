@@ -1,0 +1,1725 @@
+/*
+//Math functions
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+    double A = sqrt(9);           // Square root of 9
+    double B = pow(2, 4);         // 2 raised to the power of 4
+    int C = round(3.14);          // Round 3.14 to the nearest integer
+    int D = ceil(3.14);           // Round up 3.14 to the nearest integer
+    int E = floor(3.99);          // Round down 3.99 to the nearest integer
+    double F = fabs(-100);        // Absolute value of -100
+    double G = log(3);            // Natural logarithm of 3
+    double H = sin(45);           // Sine of 45 degrees
+    double I = cos(45);           // Cosine of 45 degrees
+    double J = tan(45);           // Tangent of 45 degrees
+
+    printf("A: %lf, B: %lf, C: %d, D: %d, E: %d, F: %lf, G: %lf, H: %lf, I: %lf, J: %lf\n", A, B, C, D, E, F, G, H, I, J);
+
+    return 0;
+}
+*/
+
+/*
+// Circle circumference and area calculator
+#include<stdio.h>
+
+int main(){
+    const double PI = 3.14159;
+    double radius;
+    double circumference;
+    double area;
+
+    printf("\nEnter the radius of the circle in meters: ");
+    scanf(" %lf",&radius);
+
+    circumference = 2 * PI * radius;
+    area = PI * radius * radius;
+
+    printf("\nCircumference of the circle : %lf metre",circumference);
+    printf("\nArea of the circle : %lf metre square",area);
+    
+    return 0;
+}
+*/
+
+/*
+//Hypotenuse calculator of triangle
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    double A;
+    double B;
+    double C;
+
+    printf("\nEnter the side A in meters: ");
+    scanf(" %lf",&A);
+    
+    printf("\nEnter the side B in meters: ");
+    scanf(" %lf",&B);
+    
+    C = sqrt(A * A + B * B);
+    
+    printf("\nSide C is %lf metre",C);
+
+    return 0;
+}
+*/
+
+/*
+// If and else if
+#include<stdio.h>
+
+int main(){
+    int age;
+    
+    printf("\nEnter the age in year(s): ");
+    scanf(" %d",&age);
+
+    if (age >= 18){
+        printf("\nYou are eligible");
+    } else if (age == 0){
+        printf("\nYou are just born you can't signup");
+    } else if (age < 0){
+        printf("\nYou are not born yet");
+    } else {
+        printf("\nYou are too young to be eligible");
+    }
+
+    return 0;
+
+}
+*/
+
+/*
+// Calculator
+#include <stdio.h>
+
+int main(){
+    char op;
+    double first, second;
+
+    printf("\nEnter an operator (+,-,*,/): ");
+    scanf(" %c",&op);
+
+    printf("\nEnter two operands : ");
+    scanf(" %lf %lf", &first, &second);
+
+    switch (op){
+
+        case '+':
+        printf("%.1lf + %.1lf = %.1lf", first, second, first + second);
+        break;
+        
+        case '-':
+        printf("%.1lf - %.1lf = %.1lf", first, second, first - second);
+        break;
+    
+        case '*':
+        printf("%.1lf * %.1lf = %.1lf", first, second, first * second);
+        break;
+    
+        case '/':
+        if (second != 0){
+            printf("%.1lf  /  %.1lf = %.1f", first, second, first / second); // Dividend / Divisor
+        } else{
+            printf("Division by 0 is not allowed");
+        }
+        break;
+        
+        default:
+        printf("%c is not a valid operator",op);
+    }
+    return 0;
+}
+*/
+
+/*
+// Temperature conversion
+#include <stdio.h>
+#include <ctype.h>
+
+int main(){
+    
+    char unit;
+    float temp;
+
+    printf("\nIs the temperature is in (F) or (C)? : ");
+    scanf(" %c",&unit);
+    
+    unit = toupper(unit);
+
+    if (unit == 'C'){
+        printf("\nEnter the temp in celsius : ");
+        scanf(" %f",&temp);
+        temp = (temp * 9 / 5) + 32;
+        printf("\nEnter the temp in farenheit is %.1f degree celsius.",temp);
+    } else if (unit == 'F'){
+        printf("\nEnter the temp in farenheit : ");
+        scanf(" %f",&temp);
+        temp = ((temp - 32) * 5) / 9;
+        printf("\nEnter the temp in celsius is %.1f degree farenheit.",temp);
+    } else{
+        printf("\n%c is not a valid unit of measurement",unit);
+    }
+    return 0;
+}
+*/
+
+/*
+// Arguments and parameters
+#include <stdio.h>
+
+void birthday(char name[], int age) //Parameters
+{
+    printf("\nHappy birthday dear %s ",name);
+    printf("\nYou are %d years old ",age);
+}
+
+int main()
+{
+    char name[10];
+    int age;
+
+    printf("Enter the name : ");
+    scanf(" %s",&name);
+
+    printf("Enter the age : ");
+    scanf(" %d",&age);
+
+    birthday(name, age); // Arguments
+
+    return 0;
+}
+*/
+
+/*
+//Return statement
+//First way
+#include<stdio.h>
+
+double square(double N); //Function declaration
+
+int main(){
+    double N;
+
+    printf("\nEnter a number : ");
+    scanf(" %lf",&N);
+
+    double result = square(N); // Call the square function(Arguments)
+
+    printf("The square of %lf is %lf\n", N, result);
+
+    return 0;
+}
+
+double square(double N){ //Parameters
+    return N * N;
+}
+
+//Second way
+#include<stdio.h>
+
+double square(double N){
+    return N * N;
+}
+
+int main(){
+    double N;
+
+    printf("\nEnter a number : ");
+    scanf(" %lf",&N);
+
+    double result = square(N);
+
+    printf("The square of %lf is %lf\n", N, result);
+
+    return 0;
+}
+*/
+
+/*
+// Ternary operator
+#include <stdio.h>
+
+int FindMax(int x, int y)
+{
+    return(x > y) ? x : y;
+}
+
+int main()
+{
+    int x;
+    int y;
+
+    printf("Enter the 1st no. : ");
+    scanf(" %d",&x);
+
+    printf("Enter the 2nd no. : ");
+    scanf(" %d",&y);
+
+    int max = FindMax(x, y);
+
+    printf("%d",max);
+
+    return 0;
+}
+*/
+
+/*
+// Function Prototype
+1. It ensures that calls to a function are made with the correct arguments.
+2. It also causes the compiler to flag an error if arguments are missing.
+3. Easier to navigate a program w/ main() at the top.
+4. Helps with debugging.
+5. Commonly used in header files.
+
+#include <stdio.h>
+
+void birthday(char name[], int age); //function declaration(function prototype)
+
+int main()
+{
+    char name[10];
+    int age;
+
+    printf("Enter the name : ");
+    scanf(" %s",&name);
+
+    printf("Enter the age : ");
+    scanf(" %d",&age);
+
+    birthday(name, age);
+
+    return 0;
+}
+
+void birthday(char name[10], int age)
+{
+    printf("\nHappy birthday dear %s ",name);
+    printf("\nYou are %d years old ",age);
+}
+*/
+
+/*
+// String functions
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+    char S1[20], S2[20], S;
+    int N;
+
+    printf("\nEnter the two strings: ");
+    scanf("%s %s", S1, S2);
+
+    printf("\nEnter the symbol: ");
+    scanf(" %c", &S);
+
+    printf("\nEnter the no.: ");
+    scanf("%d", &N);
+
+    strlwr(S1);
+    strupr(S1);
+
+    strcat(S1, S2);
+    strncat(S1, S2, N);
+
+    strcpy(S1, S2);
+    strncpy(S1, S2, N);
+
+    // String filling
+    for (int i = 0; i < strlen(S1); i++) {
+        S1[i] = S;
+    }
+
+    // String filling for the first N characters
+    for (int i = 0; i < N && i < strlen(S1); i++) {
+        S1[i] = S;
+    }
+
+    // String reversal
+    for (int i = 0, j = strlen(S1) - 1; i < j; i++, j--) {
+        char temp = S1[i];
+        S1[i] = S1[j];
+        S1[j] = temp;
+    }
+
+    int result1 = strlen(S1);
+    int result2 = strcmp(S1, S2);
+    int result3 = strncmp(S1, S2, N);
+
+    printf("%s %s %s %s %s %s\n", S1, S1, S1, S1, S1, S1);
+    printf("Length of S1: %d\n", result1);
+    printf("Comparison result (S1, S2): %d\n", result2);
+    printf("Comparison result (first %d characters of S1, S2): %d\n", N, result3);
+
+    return 0;
+}
+*/
+
+/*
+// For loop
+#include <stdio.h>
+
+int main(){
+
+    int N;
+
+    printf("\nEnter a no. : ");
+    scanf(" %d", &N);
+
+    for(int i=1;i<=N;i++){
+        printf("%d\n",i);
+    }
+
+    return 0;
+}
+*/
+
+/*
+// While loop
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    char name[10];
+
+    printf("\nEnter the name : ");
+    fgets(name, 10, stdin);
+    name[strlen(name)-1] = '\0';
+
+    while(strlen(name) == 0)
+    {
+        printf("\nYou didn't entered your name");
+        printf("\nEnter the name : ");
+        fgets(name, 10, stdin);
+        name[strlen(name)-1] = '\0';
+    }
+
+    printf("%s is the user name",name);
+    return 0;
+}
+*/
+
+/*
+// Do while loop
+#include<stdio.h>
+
+int main(){
+
+    int Num = 0, Sum = 0, Count = 0;
+
+    do{
+        printf("\nEnter a number greater than 0 : ");
+        scanf(" %d", &Num);
+        if (Num > 0){
+            Sum += Num;
+            Count++;
+        }
+    }while (Num > 0);
+
+    printf("Sum of %d numbers is %d",Count,Sum);
+
+    return 0;
+}
+*/
+
+/*
+//Nested loop
+#include <stdio.h>
+
+int main(){
+
+    int rows;
+    int columns;
+    char symbol;
+
+    printf("\nEnter no. of rows : ");
+    scanf(" %d", &rows);
+
+    printf("Enter no. of columns : ");
+    scanf(" %d", &columns);
+    
+    scanf(" %c");
+
+    printf("Enter a symbol to use : ");
+    scanf(" %c", &symbol);
+
+    for(int i = 1; i <= rows; i++)
+    {
+        for(int j = 1; j <= columns; j++)
+        {
+            printf("%c", symbol);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+*/
+
+/*
+// Continue
+#include <stdio.h>
+
+int main(){
+
+    int N, C;
+
+    printf("\nEnter the N C : ");
+    scanf(" %d %d", &N, &C);
+    
+    for(int i = 1; i <= N; i++ ){
+        if(i == C){
+            continue; //Skip
+        }
+        printf("%d\n",i);
+    }
+
+    return 0;
+}
+*/
+
+/*
+// Break
+#include <stdio.h>
+
+int main(){
+
+    int N, C;
+
+    printf("\nEnter the N C : ");
+    scanf(" %d %d", &N, &C);
+    
+    for(int i = 1; i <= N; i++ ){
+        if(i == C){
+            break; //Exit
+        }
+        printf("%d\n",i);
+    }
+
+    return 0;
+}
+*/
+
+/*
+// Array with DMA
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+    int N;
+    char Suffix[3];
+
+    printf("\nEnter the number for loop of array : ");
+    scanf(" %d",&N);
+
+    int Numbers[N];
+
+    for(int i = 1; i <= N; i++){
+        
+        int OnesDigit = i % 10;
+        int TensDigit = (i / 10) % 10;
+
+        if (OnesDigit == 1 && TensDigit != 1){
+            strcpy(Suffix, "st");
+        } else if(OnesDigit == 2 && TensDigit != 1){
+            strcpy(Suffix, "nd");
+        } else if(OnesDigit == 3 && TensDigit != 1){
+            strcpy(Suffix, "rd");
+        } else{
+            strcpy(Suffix, "th");
+        }
+        printf("\nEnter the %d%s number : ",i,Suffix);
+        scanf(" %d",&Numbers[i]);
+    }
+
+    for(int i = 1; i <= N; i++){
+        
+        int OnesDigit = i % 10;
+        int TensDigit = (i / 10) % 10;
+
+        if (OnesDigit == 1 && TensDigit != 1){
+            strcpy(Suffix, "st");
+        } else if(OnesDigit == 2 && TensDigit != 1){
+            strcpy(Suffix, "nd");
+        } else if(OnesDigit == 3 && TensDigit != 1){
+            strcpy(Suffix, "rd");
+        } else{
+            strcpy(Suffix, "th");
+        }
+        printf("\n%d%s number entered : %d\n",i,Suffix,Numbers[i]);
+    }
+
+    return 0;
+}
+*/
+
+/*
+// Array(2D)
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    // int Numbers[3][3] = {
+    //     {1,2,3},
+    //     {4,5,6},
+    //     {7,8,9}
+    // };
+
+    for(int i = 0; i < 2; i++){
+        for(int j = 0; j < 3; j++){
+            printf("%d ",Numbers[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+*/
+
+/*
+// Array of Strings
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    char cars[][20] = {"Toyota Supra", "Skyline Gtr", "Koenigsegg Absolut", "Mustang Gt"};
+
+    strcpy(cars[3], "BMW M5");
+
+    for(int i=0; i < sizeof(cars)/sizeof(cars[0]); i++)
+    {
+        printf("%s\n",cars[i]);
+    }
+    return 0;
+}
+*/
+
+/*
+// Array of strings
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    char cars[20];
+    char scar[20];
+    int NOC;
+    int index;
+
+    printf("\nEnter no. of cars : ");
+    scanf(" %d", &NOC);
+
+    for(int i = 1; i <= NOC; i++)
+    {
+        fgets(cars, 20, stdin);
+        cars[strlen(cars)-1] = '\0';
+    }
+
+    printf("\nEnter index of car to change : ");
+    scanf(" %d", &index);
+
+    printf("\nEnter the name of car to change: ");
+    fgets(scar, 20, stdin);
+    scar[strlen(scar)-1] = '\0';
+
+    strcpy(cars[index], scar);
+
+    for(int i=0; i < sizeof(cars)/sizeof(cars[0]); i++)
+    {
+        printf("%s\n",cars[i]);
+    }
+    return 0;
+}
+*/
+
+/*
+//String swap values
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int N;
+
+    printf("\nEnter the number of array : ");
+    scanf(" %d",&N);
+
+    char S1[N + 1];
+    char S2[N + 1];
+    char Temp[N + 1];
+
+    printf("\nEnter the name of 1st String : ");
+    scanf(" %s",S1);
+
+    printf("\nEnter the name of 2nd String : ");
+    scanf(" %s",S2);
+    
+    printf("\nBefore swapping:\n");
+    printf("S1 = %s\n",S1);
+    printf("S2 = %s\n",S2);
+
+    strcpy(Temp, S1);
+    strcpy(S1, S2);
+    strcpy(S2, Temp);
+
+    printf("\nAfter swapping:\n");
+    printf("S1 = %s\n",S1);
+    printf("S2 = %s\n",S2);
+
+    return 0;
+}
+*/
+
+/*
+//Swapping of nos.
+#include <stdio.h>
+
+int main() {
+    int firstValue, secondValue, temp;
+
+    printf("Enter the first value: ");
+    scanf(" %d", &firstValue);
+
+    printf("Enter the second value: ");
+    scanf(" %d", &secondValue);
+
+    printf("Before swapping:\n");
+    printf("First value: %d\n", firstValue);
+    printf("Second value: %d\n", secondValue);
+
+    temp = firstValue;
+    firstValue = secondValue;
+    secondValue = temp;
+
+    printf("\nAfter swapping:\n");
+    printf("First value: %d\n", firstValue);
+    printf("Second value: %d\n", secondValue);
+
+    return 0;
+}
+*/
+
+/*
+//Structure with DMA
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Define the structure Player
+struct Player{ //Struct is the collection of related members of different data types listed under one name in a block of memory similar to (Class)
+    int Score;
+    char Name[];  // Flexible array member, must be the last member
+};
+
+int main(){
+    // Declare variables
+    int N, Size, Score;
+
+    // Prompt for the number of players
+    printf("Enter the number of players: ");
+    scanf(" %d", &N);
+
+    // Prompt for the size of the name
+    printf("Enter size of name : ");
+    scanf(" %d", &Size);
+
+    // Allocate memory for an array of Player structures
+    struct Player *Players = malloc(N * (sizeof(struct Player) + Size));
+
+    for(int i = 0; i < N; i++){
+        // Prompt for the name (including handling the newline character)
+        printf("\nEnter the name for Player %d: ", i + 1);
+        getchar();  // Consume the newline character left in the buffer
+        fgets(Players[i].Name, Size, stdin);
+        Players[i].Name[strlen(Players[i].Name) - 1] = '\0';
+
+        // Prompt for the score
+        printf("Enter the score for Player %d: ", i + 1);
+        scanf(" %d", &Score);
+        Players[i].Score = Score;
+    }
+
+    // Display the information for each player
+    for(int i = 0; i < N; i++){
+        printf("\nPlayer %d:\n", i + 1);
+        printf("Name: %s\n", Players[i].Name);
+        printf("Score: %d\n", Players[i].Score);
+    }
+
+    // To free the allocated memory
+    free(Players);
+
+    return 0;
+}
+*/
+
+/*
+//Typdef (Keyword that defines an existing datatype a nickname)
+#include<stdio.h>
+
+typedef struct{
+    char UserName[25];
+    char Password[25];
+    int Id;
+}User; //Nickname of the datatype
+
+int main(){
+    User U1={"Shivam","IAmACoder",1};
+    User U2={"Hemant","CoderAsWell",2};
+
+    printf("First user details are given below : \n");
+    printf("Username is : %s\n",U1.UserName);
+    printf("Password is : %s\n",U1.Password);
+    printf("Id is : %d\n",U1.Id);
+    printf("\n");
+    printf("Second user details are given below : \n");
+    printf("Username is : %s\n",U2.UserName);
+    printf("Password is : %s\n",U2.Password);
+    printf("Id is : %d",U2.Id);
+
+    return 0;
+}
+*/
+
+/*
+//Array of structs
+#include<stdio.h>
+
+typedef struct{
+    char Name[10];
+    float GPA;
+}Student;
+
+int main(){
+    Student S1={"Shivam",6.5};
+    Student S2={"Hemant",8};
+    Student S3={"Abhishek",7};
+    Student S4={"Rahul",6};
+
+    Student Students[] = {S1,S2,S3,S4};
+
+    for(int i=0;i<sizeof(Students)/sizeof(S1);i++){
+        printf("%-10s ",Students[i].Name);
+        printf("%f \n",Students[i].GPA);
+    }
+
+    return 0;
+}
+*/
+
+/*
+//Enumeration
+#include<stdio.h>
+#include<string.h>
+
+enum Day{Sun=1,Mon=2,Tue=3,Wed=4,Thu=5,Fri=6,Sat=7}; //Enum is a user defined datatype for named integers identifiers and they are not strings, but can be treated as integer
+
+int main(){
+    char Today[6];
+
+    printf("Enter the day : ");
+    scanf(" %s",&Today);
+
+    if(strcmp(Today,"Sun")==0||strcmp(Today,"Sat")==0){
+        printf("Today is weekend you can netflix and chill");
+    }else{
+        printf("Today is a weekday work efficiently");
+    };
+
+    return 0;
+}
+*/
+
+/*
+//Pseudo random number
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int main(){
+    srand(time(0));
+
+    int N1=(rand()%6)+1;
+    int N2=(rand()%6)+1;
+    int N3=(rand()%6)+1;
+   
+    printf("%d\n",N1);
+    printf("%d\n",N2);
+    printf("%d\n",N3);
+
+    return 0;
+}
+*/
+
+/*
+//Bubble sort for given list
+#include <stdio.h>
+
+void sort(int array[], int size)
+{
+    for(int i = 0; i < size - i - 1; i++)
+    {
+        for(int j = 0; j < size - i - 1; j++)
+        {
+            if(array[j] > array[j+1]) //if(array[j] < array[j+1]) for descending order sort
+            {
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
+        }
+    }
+
+}
+
+void PrintArray(int array[], int size)
+{
+    for(int i = 0; i < size; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    
+}
+
+int main()
+{
+    int array[]={9, 1, 8, 2, 7, 3, 6, 4, 5};
+    int size = sizeof(array)/sizeof(array[0]);
+
+    sort(array, size);
+    printf("Sorted array: ");
+    PrintArray(array, size);
+    
+    return 0;
+}
+*/
+
+/*
+//Bubble sort for n no. of elements
+#include <stdio.h>
+
+void BubbleSort(int array[], int size)
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = 0; j < size - i - 1; j++)
+        {
+            if (array[j] > array[j+1])
+            {
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
+        }
+    }
+}
+
+void PrintArray(int array[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+int main()
+{
+    int size;
+
+    printf("Enter the number of elements: ");
+    scanf(" %d", &size);
+
+    int array[size];
+
+    printf("Enter the elements:\n");
+    for (int i = 0; i < size; i++)
+    {
+        scanf(" %d", &array[i]);
+    }
+
+    BubbleSort(array, size);
+    printf("Sorted array: ");
+    PrintArray(array, size);
+
+    return 0;
+}
+*/
+
+/*
+//Insertion sort
+#include <stdio.h>
+
+void insertionSort(int arr[], int n) {
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = arr[i];
+        j = i - 1;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int main() 
+{
+    int n;
+    printf("Enter the number of elements: ");
+    scanf(" %d", &n);
+    
+    int arr[n];
+    printf("Enter %d elements: \n", n);
+    for (int i = 0; i < n; i++) 
+    {
+        scanf(" %d", &arr[i]);
+    }
+
+    printf("Original array: ");
+    for (int i = 0; i < n; i++) 
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    insertionSort(arr, n);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) 
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+*/
+
+/*
+//Tic tac toe
+#include <stdio.h>
+
+// Function to print the current board
+void printBoard(char board[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf(" %c ", board[i][j]);
+            if (j < 2) printf("|");
+        }
+        printf("\n");
+        if (i < 2) printf("---|---|---\n");
+    }
+}
+
+// Function to check for win or draw
+char checkWin(char board[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) return board[i][0];
+        if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) return board[0][i];
+    }
+    
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) return board[0][0];
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) return board[0][2];
+    
+    return ' ';
+}
+
+int main() {
+    char board[3][3] = {
+        {' ', ' ', ' '},
+        {' ', ' ', ' '},
+        {' ', ' ', ' '}
+    };
+    
+    int currentPlayer = 1;
+    int totalMoves = 0;
+    char winner = ' ';
+    
+    while (totalMoves < 9 && winner == ' ') {
+        printBoard(board);
+        
+        int row, col;
+        printf("\nPlayer %d, enter row and column (1-3) separated by space: ", currentPlayer);
+        scanf("%d %d", &row, &col);
+        
+        // Adjusting to 0-based indices
+        row--;
+        col--;
+        
+        if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ') {
+            board[row][col] = (currentPlayer == 1) ? 'X' : 'O';
+            totalMoves++;
+            winner = checkWin(board);
+            currentPlayer = (currentPlayer == 1) ? 2 : 1;
+        } else {
+            printf("Invalid move. Try again.\n");
+        }
+    }
+    
+    printBoard(board);
+    
+    if (winner != ' ') {
+        printf("Player %d wins!\n", (winner == 'X') ? 1 : 2);
+    } else {
+        printf("It's a draw!\n");
+    }
+    
+    return 0;
+}
+*/
+
+/*
+//Factorial of no.
+#include<stdio.h>
+
+int main(){
+    int N;
+    int F=1;
+
+    printf("Enter a no.");
+    scanf(" %d",&N);
+
+    for(int i=1;i<=N;i++){
+        F*=i;
+    }
+
+    printf("Factorial of %d is %d",N,F);
+
+    return 0;
+}
+*/
+
+/*
+//Pointer (A variable-like reference that holds a memory address to another variable,array,etc)
+#include <stdio.h>
+
+int main() {
+    // Declare a variable and a pointer
+    int number = 42;
+    int *ptr;
+
+    // Assign the address of the variable to the pointer
+    ptr = &number;
+
+    // Display the value and address of the variable using the variable itself
+    printf("Value of number: %d\n", number);
+    printf("Address of number: %p\n", (void *)&number);  // %p is used to print addresses
+
+    // Display the value and address of the variable using the pointer
+    printf("Value of number using pointer: %d\n", *ptr);  // Dereference operator (*)
+    printf("Address of number using pointer: %p\n", (void *)ptr);
+
+    // Modify the value of the variable using the pointer
+    *ptr = 99;
+
+    // Display the updated value of the variable
+    printf("Updated value of number: %d\n", number);
+
+    return 0;
+}
+*/
+
+/*
+//Union (A union in C is a user-defined data type that allows you to store different data types in the same memory location. All members of a union share the same memory space)
+#include <stdio.h>
+
+// Define a union named MyUnion
+union MyUnion {
+    int intValue;
+    float floatValue;
+    char stringValue[20];
+};
+
+int main() {
+    // Declare a variable of type union MyUnion
+    union MyUnion myData;
+
+    // Assign values to the members of the union
+    myData.intValue = 42;
+    printf("Value of intValue: %d\n", myData.intValue);
+
+    myData.floatValue = 3.14;
+    printf("Value of floatValue: %f\n", myData.floatValue);
+
+    // Assigning a string to the union (be careful about the size)
+    snprintf(myData.stringValue, sizeof(myData.stringValue), "Hello, Union!");
+    printf("Value of stringValue: %s\n", myData.stringValue);
+
+    // Display the sizes of the union and its members
+    printf("Size of MyUnion: %lu bytes\n", sizeof(union MyUnion));
+    printf("Size of intValue: %lu bytes\n", sizeof(myData.intValue));
+    printf("Size of floatValue: %lu bytes\n", sizeof(myData.floatValue));
+    printf("Size of stringValue: %lu bytes\n", sizeof(myData.stringValue));
+
+    return 0;
+}
+*/
+
+/*
+//Reverse of a no. with recursion
+#include <stdio.h>
+
+// Function to reverse a number using recursion
+int reverseNumber(int N, int rev){
+    // Base case: when the number becomes 0
+    if(N == 0){
+        return rev;
+    }else{
+        // Extract the last digit of the number
+        int lastDigit = N % 10;
+        
+        // Update the reversed number
+        rev = rev * 10 + lastDigit;
+        
+        // Recursive call with the remaining digits
+        return reverseNumber(N / 10, rev);
+    }
+}
+
+int main(){
+    int N, reversedNumber;
+    
+    // Input a number from the user
+    printf("Enter a number: ");
+    scanf("%d", &N);
+    
+    // Call the function to reverse the number
+    reversedNumber = reverseNumber(N, 0);
+    
+    // Display the reversed number
+    printf("Reversed Number: %d\n", reversedNumber);
+    
+    return 0;
+}
+*/
+/*
+//Reverse of a no. without recursion
+#include<stdio.h>
+
+int reverseNumber(int N){
+    int rev=0;
+
+    while(N!=0){
+        int lastDigit=N%10;
+        rev=rev*10+lastDigit;
+        N/=10;
+    }
+
+    return rev;
+}
+
+int main(){
+    int N;
+
+    printf("Enter a no. : ");
+    scanf("%d",&N);
+
+    int reversedNumber=reverseNumber(N);
+
+    printf("Reversed no. of %d is %d",N,reversedNumber);
+
+    return 0;
+}
+*/
+
+/*
+//Fibonacci series
+#include<stdio.h>
+
+int main(){
+    int N,firstValue=0,secondValue=1,nextValue;
+
+    printf("Enter a no. : ");
+    scanf("%d",&N);
+
+    for(int i=0;i<=N;i++){
+        if(i<=1){
+            nextValue=i;
+        }else{
+            nextValue=firstValue+secondValue;
+            firstValue=secondValue;
+            secondValue=nextValue;
+        }
+    }
+
+    printf("Fibonacci series is : %d",nextValue);
+
+    return 0;
+}
+*/
+
+/*
+//Fibonacci series with recursion
+#include <stdio.h>
+
+// Function to calculate the nth Fibonacci number
+int fibonacci(int N) {
+    if (N <= 1) {
+        return N;
+    } else {
+        // Recursive call to calculate Fibonacci numbers
+        return fibonacci(N - 1) + fibonacci(N - 2);
+    }
+}
+
+int main() {
+    int N;
+
+    // Input the number of terms in the Fibonacci series
+    printf("Enter the number of terms in the Fibonacci series: ");
+    scanf("%d", &N);
+
+    // Print the Fibonacci series
+    printf("Fibonacci series up to %d terms:\n", N);
+    for (int i = 0; i < N; i++){
+        printf("%d ", fibonacci(i));
+    }
+
+    return 0;
+}
+*/
+
+/*
+//Fibonacci series without recursion
+#include <stdio.h>
+
+void fibonacci(int n) {
+    int first = 0, second = 1, next, i;
+
+    printf("Fibonacci Series up to %d terms:\n", n);
+
+    for (i = 0; i < n; i++) {
+        if (i <= 1) {
+            next = i;
+        } else {
+            next = first + second;
+            first = second;
+            second = next;
+        }
+
+        printf("%d ", next);
+    }
+}
+
+int main() {
+    int terms;
+
+    printf("Enter the number of terms in the Fibonacci series: ");
+    scanf("%d", &terms);
+
+    fibonacci(terms);
+
+    return 0;
+}
+*/
+
+/*
+//String reversal with dynamic memory allocation
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to reverse a string
+void reverseString(char *str) {
+    int length = strlen(str);
+    int start = 0;
+    int end = length - 1;
+
+    while (start < end) {
+        // Swap characters at start and end positions
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+
+        // Move towards the center
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    char *line = NULL;
+    size_t len = 0;
+
+    printf("Enter text (Ctrl+D to end on Unix/Linux, Ctrl+Z on Windows):\n");
+
+    // Read lines until the end of the input
+    while (getline(&line, &len, stdin) != -1) {
+        // Remove newline character from the end of the line
+        line[strcspn(line, "\n")] = '\0';
+
+        // Reverse the line
+        reverseString(line);
+
+        // Print the reversed line
+        printf("Reversed: %s\n", line);
+    }
+
+    // Free dynamically allocated memory
+    free(line);
+
+    return 0;
+}
+*/
+
+/*
+//Count white spaces
+#include <stdio.h>
+#include <stdlib.h>
+
+int countWhiteSpaces(const char *text) {
+    int count = 0;
+
+    while (*text) {
+        if (*text == ' ' || *text == '\t' || *text == '\n') {
+            count++;
+        }
+        text++;
+    }
+
+    return count;
+}
+
+int main() {
+    // Prompt user for the maximum length of the text
+    int maxTextLength;
+    printf("Enter the maximum length of the text: ");
+    scanf("%d", &maxTextLength);
+
+    // Allocate memory for the text dynamically
+    char *text = (char *)malloc(maxTextLength * sizeof(char));
+
+    if (text == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1; // Return with an error code
+    }
+
+    // Clear the input buffer
+    while (getchar() != '\n');
+
+    // Prompt user for the text
+    printf("Enter a text:\n");
+    fgets(text, maxTextLength, stdin);
+
+    // Count white spaces
+    int spaces = countWhiteSpaces(text);
+
+    // Print the result
+    printf("Number of white spaces: %d\n", spaces);
+
+    // Free dynamically allocated memory
+    free(text);
+
+    return 0;
+}
+*/
+
+/*
+//Count lines
+#include <stdio.h>
+#include <stdlib.h>
+
+int countLines(const char *text) {
+    int count = 0;
+
+    while (*text) {
+        if (*text == '\n') {
+            count++;
+        }
+        text++;
+    }
+
+    return count;
+}
+
+int main() {
+    // Prompt user for the maximum length of the text
+    int maxTextLength;
+    printf("Enter the maximum length of the text: ");
+    scanf("%d", &maxTextLength);
+
+    // Allocate memory for the text dynamically
+    char *text = (char *)malloc(maxTextLength * sizeof(char));
+
+    if (text == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1; // Return with an error code
+    }
+
+    // Clear the input buffer
+    while (getchar() != '\n');
+
+    // Prompt user for the text
+    printf("Enter a text:\n");
+    fgets(text, maxTextLength, stdin);
+
+    // Count lines
+    int lines = countLines(text);
+
+    // Print the result
+    printf("Number of lines: %d\n", lines);
+
+    // Free dynamically allocated memory
+    free(text);
+
+    return 0;
+}
+*/
+
+/*
+//String is palindrome with DMA
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to check if a string is a palindrome
+int isPalindrome(char *str) {
+    int length = strlen(str);
+    int start = 0;
+    int end = length - 1;
+
+    while (start < end) {
+        // Compare characters at start and end positions
+        if (str[start] != str[end]) {
+            return 0; // Not a palindrome
+        }
+
+        // Move towards the center
+        start++;
+        end--;
+    }
+
+    return 1; // Palindrome
+}
+
+int main() {
+    char *inputString = NULL;
+    size_t len = 0;
+
+    printf("Enter a string: ");
+    getline(&inputString, &len, stdin);
+
+    // Remove newline character from the end of the string
+    inputString[strcspn(inputString, "\n")] = '\0';
+
+    // Check if the string is a palindrome
+    if (isPalindrome(inputString)) {
+        printf("The entered string is a palindrome.\n");
+    } else {
+        printf("The entered string is not a palindrome.\n");
+    }
+
+    // Free dynamically allocated memory
+    free(inputString);
+
+    return 0;
+}
+*/
+
+/*
+//Palindrome(alphanumeric)
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+// Function to check if a string is a palindrome
+int isPalindrome(char str[]) {
+    int length = strlen(str);
+    int start = 0;
+    int end = length - 1;
+
+    while (start < end) {
+        // Ignore non-alphanumeric characters
+        while (!isalnum(str[start]) && start < end) {
+            start++;
+        }
+        while (!isalnum(str[end]) && start < end) {
+            end--;
+        }
+
+        // Compare characters after converting to lowercase
+        if (tolower(str[start]) != tolower(str[end])) {
+            return 0; // Not a palindrome
+        }
+
+        // Move to the next pair of characters
+        start++;
+        end--;
+    }
+
+    return 1; // Palindrome
+}
+
+int main() {
+    char inputString[100];
+
+    // Input a string from the user
+    printf("Enter a string: ");
+    fgets(inputString, sizeof(inputString), stdin);
+
+    // Remove the newline character at the end of the input
+    inputString[strcspn(inputString, "\n")] = '\0';
+
+    // Check if the string is a palindrome
+    if(isPalindrome(inputString)){
+        printf("The string is a palindrome.\n");
+    }else{
+        printf("The string is not a palindrome.\n");
+    }
+
+    return 0;
+}
+*/
+
+/*
+//Prime no. or not
+#include<stdio.h>
+
+int PrimeOrNotPrime(int N){
+    int Count = 0;
+
+    for(int i = 1; i <= N; i++){
+        if(N % i==0){
+            Count++;
+        }
+    }
+
+    if(Count == 2){
+        printf("%d is prime",N);
+    }else{
+        printf("%d is not prime",N);
+    }
+
+    return 0;
+}
+
+int main(){
+    int N;
+
+    printf("Enter a number to check whether it is prime or not : ");
+    scanf("%d", &N);
+
+    PrimeOrNotPrime(N);
+
+    return 0;
+}
+*/
+
+/*
+//HCF or GCD of a no.
+#include<stdio.h>
+
+int findHCF(int A, int B){
+    while (B!=0){
+        int Temp=B;
+        B=A%B;
+        A=Temp;
+    }
+    return A;
+}
+
+int main(){
+    int A,B;
+
+    printf("Enter the two nos. : ");
+    scanf(" %d %d",&A,&B);
+
+    int HCF=findHCF(A, B);
+
+    printf("HCF of %d & %d is %d\n",A,B,HCF);
+
+    return 0;
+}
+*/
+
+/*
+//String reversal
+#include <stdio.h>
+#include <string.h>
+
+void reverseString(char str[]) {
+    int length = strlen(str);
+    int start = 0;
+    int end = length - 1;
+
+    while (start < end) {
+        // Swap characters at start and end positions
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+
+        // Move to the next pair of characters
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    char inputString[100];
+
+    // Input a string from the user
+    printf("Enter a string: ");
+    fgets(inputString, sizeof(inputString), stdin);
+
+    // Remove the newline character at the end of the input
+    inputString[strcspn(inputString, "\n")] = '\0';
+
+    // Reverse the string
+    reverseString(inputString);
+
+    // Print the reversed string
+    printf("Reversed string: %s\n", inputString);
+
+    return 0;
+}
+*/
+
+/*
+//String is palindrome or not
+#include <stdio.h>
+#include <string.h>
+
+// Function to check if a string is a palindrome
+int isPalindrome(const char *str) {
+    int length = strlen(str);
+    int start = 0;
+    int end = length - 1;
+
+    while (start < end) {
+        // Compare characters from the beginning and end
+        if (str[start] != str[end]) {
+            return 0; // Not a palindrome
+        }
+
+        // Move towards the center
+        start++;
+        end--;
+    }
+
+    return 1; // Palindrome
+}
+
+int main() {
+    char input[100];
+
+    printf("Enter a string: ");
+    scanf("%s", input);
+
+    if (isPalindrome(input)) {
+        printf(" %s is a palindrome.\n", input);
+    } else {
+        printf(" %s is not a palindrome.\n", input);
+    }
+
+    return 0;
+}
+*/
